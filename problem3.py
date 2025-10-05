@@ -14,12 +14,19 @@ def get_numbers_from_user():
     numbers = []
 
     while True:
+        User_Number = input("Enter numbers here (and 'done' to finish): ").strip().lower()
+        if User_Number == "done":
+            break
+
+        try:
+            value=float(User_Number)
+            numbers.append(value)
+        except ValueError:
+            print("Please enter valid number or 'done'")
         # TODO: Get input from user
         # TODO: Check if user typed 'done'
         # TODO: Try to convert to float and add to list
         # TODO: Handle invalid input gracefully
-        pass
-
     return numbers
 
 
@@ -42,9 +49,24 @@ def analyze_numbers(numbers):
     """
     if not numbers:
         return None
-
-    analysis = {}
-
+    
+    count = len(numbers)
+    total = sum(numbers)
+    average = total / count
+    minimum = min(numbers)
+    maximum = max(numbers)
+    even_count = sum(1 for n in numbers if n.is_integer() and int(n) % 2 == 0)
+    odd_count = sum(1 for n in numbers if n.is_integer() and int(n) % 2 != 0)
+    
+    analysis = {
+        "count": count,
+        "sum": total,
+        "average": average,
+        "minimum": minimum,
+        "maximum": maximum,
+        "even_count": even_count,
+        "odd_count": odd_count,
+    }
     # TODO: Calculate count
     # TODO: Calculate sum
     # TODO: Calculate average
@@ -52,7 +74,6 @@ def analyze_numbers(numbers):
     # TODO: Find maximum
     # TODO: Count even numbers (hint: use modulo operator)
     # TODO: Count odd numbers
-
     return analysis
 
 
@@ -68,14 +89,19 @@ def display_analysis(analysis):
 
     print("\nAnalysis Results:")
     print("-" * 20)
-
+    print(f"Count: {analysis['count']}")
+    print(f"Sum: {analysis['sum']}")
+    print(f"Average: {analysis['average']:.2f}")
+    print(f"Minimum: {analysis['minimum']}")
+    print(f"Maximum: {analysis['maximum']}")
+    print(f"Even numbers: {analysis['even_count']}")
+    print(f"Odd numbers: {analysis['odd_count']}")
     # TODO: Display all analysis results in a nice format
     # Example:
     # Count: 5
     # Sum: 25
     # Average: 5.00
     # etc.
-    pass
 
 
 def main():
