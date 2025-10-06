@@ -1,0 +1,9 @@
+d7f9619 Personalize hello message
+a335bec Add hello_git.py
+549489b Solved
+7e05d8c Solved
+7cb4cb4 Solved
+ff23cd0 Ex 1 renamed
+16b39fe Add my name and date
+7bcb689 Add GitHub Classroom autograding configuration
+2dc2daa Initial commit
